@@ -3,8 +3,10 @@ import axios from 'axios'
 const Cities = () =>{
     const url = 'http://localhost:5000/';
     const [data, setData] = useState('');
+    const [filter, setFilter] = useState('');
 
     useEffect(() => {
+        document.title = 'My Tinerary Cities'
         getAllData()
     }, []);
 
@@ -15,21 +17,25 @@ const Cities = () =>{
             const allCities = response.data;
             //add data to state
             setData(allCities)
-    })
-    .catch(error => console.error(`Error: ${error}`));
+        })
+        .catch(error => console.error(`Error: ${error}`));
     }
     console.log(data)
     return(
-        Object.keys(data).map((x) => {
-            return(
-                <ul key={data[x]._id}>
-                    <li>{data[x].name}</li>
-                    <li>{data[x].country}</li>
-                    <li>{data[x]._id}</li>
-                    <li>{data[x].image}</li>
+            <div>
+                <input 
+                    name = 'input'
+                    style = {{textAlign : 'center'}}
+                    type = 'text'
+                    placeholder = 'type to filter the city'
+                    value = {filter}
+                    onChange = {event => setFilter(event.target.value) || filter === ''}
+                />
+                <ul style={{listStyleType : 'none', textAlign : 'left'}}>
+                    {Object.keys(data).filter(f => data[f].name.includes(filter))
+                        .map(x => <li key={data[x]._id}>{data[x].name}</li>)}
                 </ul>
-        )
-        })
+            </div>
     )
 };
 
