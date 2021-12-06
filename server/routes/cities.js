@@ -2,7 +2,34 @@ const express = require('express')
 const router = express.Router()
 const cityModel = require('../model/cityModel')
 
-/*get all cities*/
+//test route
+router.get('/test', (req, res) => {
+    res.send({ msg: 'Cities test route.' })
+})
+
+//post cities 
+router.post('/', (req, res) => {
+    const newCity = new cityModel({
+        name: req.body.name,
+        country: req.body.country,
+        img: req.body.img
+    })
+
+    cityModel.findOne({ name: newCity.name})
+    .then(city => {
+        if(city) res.status(500).send('This city already exist')
+    })
+
+    newCity.save()
+      .then(city => {
+        res.send(city)
+      })
+      .catch(err => {
+        res.status(500).send("Server error")
+    }) 
+});
+
+//get all cities*
 router.get('/all',
     (req, res) => {
         cityModel.find({})
@@ -11,17 +38,4 @@ router.get('/all',
             })
             .catch(err => console.log(err));
     });
-
-router.post('/', (req, res) => {
-    const newCity = new cityModel({
-        name: req.body.name,
-        country: req.body.country
-    })
-    newCity.save()
-      .then(city => {
-      res.send(city)
-      })
-      .catch(err => {
-      res.status(500).send("Server error")}) 
-});
 module.exports = router
