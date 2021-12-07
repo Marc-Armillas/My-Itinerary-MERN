@@ -34,7 +34,7 @@ const Cities = () =>{
                     onChange = {event => setFilter(event.target.value) || filter === ''}
                 />
                 <ul style={{listStyleType : 'none'}}>
-                    {Object.keys(data).filter(f => data[f].name.includes(filter))
+                    {Object.keys(data).filter(f => data[f].name.startsWith(filter))
                         .map(x => <li key={data[x]._id}>{data[x].name}</li>)}
                 </ul>
             </div>
