@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
     const newCity = new cityModel({
         name: req.body.name,
         country: req.body.country,
-        img: req.body.img
+        image: req.body.image
     })
 
     cityModel.findOne({ name: newCity.name})
