@@ -15,27 +15,27 @@ router.post('/', (req, res) => {
         image: req.body.image
     })
 
-    cityModel.findOne({ name: newCity.name})
-    .then(city => {
-        if(city) res.status(500).send('This city already exist')
-    })
+    cityModel.findOne({ name: newCity.name })
+        .then(city => {
+            if (city) res.status(500).send('This city already exist')
+        })
 
     newCity.save()
-      .then(city => {
-        res.send(city)
-      })
-      .catch(err => {
-        res.status(500).send("Server error")
-    }) 
+        .then(city => {
+            res.send(city)
+        })
+        .catch(err => {
+            res.status(500).send("Server error")
+        })
 });
 
 //get all cities*
-router.get('/all',
-    (req, res) => {
-        cityModel.find({})
-            .then(files => {
-                res.send(files)
-            })
-            .catch(err => console.log(err));
-    });
-module.exports = router
+router.get("/all", (req, res) => {
+  cityModel
+    .find({})
+    .then((files) => {
+      res.send(files);
+    })
+    .catch((err) => console.log(err));
+});
+module.exports = router;
