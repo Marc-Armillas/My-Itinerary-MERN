@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCities } from '../store/actions/cityActions';
@@ -28,8 +29,13 @@ const Cities = () => {
                              onChange = {event => setFilter(event.target.value) || filter === ''}
                          />
                          <ul style={{listStyleType : 'none'}}>
-                             {data && data.filter(f => f.name.toLowerCase().startsWith(filter.toLocaleLowerCase()))
-                                 .map(x => <li key={x._id}>{x.name}</li>)}
+                             {data && data.filter(f => f.name.toLowerCase().startsWith(filter.toLocaleLowerCase()) || 
+                             f.country.toLowerCase().startsWith(filter.toLocaleLowerCase()))
+                                 .map(x => 
+                                    <ul>
+                                        <li key={x._id}>{x.name} //// {x.country}</li>
+                                        <img alt={x.name} src={x.image} />
+                                    </ul>)}
                          </ul>
                      </div>
     )
