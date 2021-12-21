@@ -1,6 +1,6 @@
 Bookstore MERN project at Ubiqum Code Academy bootcamp.
 
 This project was made using:
-–React
--Redux
--Bootstrap
+React
+Redux and 
+Bootstrap
