@@ -38,4 +38,18 @@ router.get("/all", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+
+
+//get one city
+router.get('/:name',
+	(req, res) => {
+  		let cityRequested = req.params.name;
+  		cityModel.findOne({ name: cityRequested })
+			.then(city => {
+				res.send(city)
+			})
+			.catch(err => console.log(err));
+});
+
+
 module.exports = router;

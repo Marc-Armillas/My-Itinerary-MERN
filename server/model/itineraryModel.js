@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
+
 const itinerarySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    // unique: true,
+    unique: true
   },
-
   profile: {
     type: String,
-    // required: true,
+    required: true
   },
   rating: {
     type: Number,
@@ -17,19 +17,13 @@ const itinerarySchema = new mongoose.Schema({
     type: String,
   },
   price: {
+    type: Number,
+  },
+  hashtag: {
+    type: [String],
+  },
+  name_city: {
     type: String,
-  },
-  hashtags: {
-    type: [String],
-  },
-  activities: {
-    type: [String],
-  },
-  favorites: {
-    type: [String],
-  },
-  comments: {
-    type: [Object],
-  },
+  }
 });
 module.exports = mongoose.model("itinerary", itinerarySchema);
