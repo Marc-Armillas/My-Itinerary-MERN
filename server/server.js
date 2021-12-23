@@ -5,8 +5,9 @@ const port = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require('./keys').mongoURI;
+const mongoose = require("mongoose");
 
-
+//coors
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -26,8 +27,6 @@ app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
 
 //mongoose connect with db
-const mongoose = require("mongoose");
-
 mongoose.connect(db)
   .then(() => console.log('Connection to Mongodb established'))
   .catch(err => console.log(err));

@@ -1,13 +1,15 @@
+//variables
 const express = require('express')
 const router = express.Router()
 const itineraryModel = require('../model/itineraryModel')
 
+//test route
 router.get('/test', (req, res) => {
     res.send({ msg: 'Itineraries test route.' })
 
-})
+});
 
-//rectificar el post 
+//post itineraries
 router.post('/', (req, res) => {
     const newItinerary = new itineraryModel({
         name: req.body.name,
@@ -22,7 +24,7 @@ router.post('/', (req, res) => {
     itineraryModel.findOne({ name: newItinerary.name })
     .then(itinerary => {
         if (itinerary) res.status(500).send("Choose another name, this already exists in the DB")
-    }) 
+    })
     
     newItinerary.save()
         .then(itinerary => {
@@ -31,8 +33,9 @@ router.post('/', (req, res) => {
         .catch(err => {
             res.status(500).send("Server error")
         })
-})
+});
 
+//get all itineraries
 router.get('/all', (req, res) => {
     itineraryModel
         .find({})
@@ -42,6 +45,7 @@ router.get('/all', (req, res) => {
         .catch(err => console.log(err));
 });
 
+//get itineraries by city
 router.get('/:name_city',
     (req, res) => {
         let cityRequested = req.params.name_city;

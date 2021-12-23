@@ -1,5 +1,7 @@
+//variables
 const mongoose = require('mongoose')
 
+//city schema
 const citySchema = new mongoose.Schema({
     name: {
         type: String,

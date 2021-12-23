@@ -1,5 +1,7 @@
+//variables
 const mongoose = require("mongoose");
 
+//itinerary schema
 const itinerarySchema = new mongoose.Schema({
   name: {
     type: String,
@@ -28,4 +30,5 @@ const itinerarySchema = new mongoose.Schema({
     required: true
   }
 });
+//name of module is the singular version (itinerary) of the database name (itineraries)
 module.exports = mongoose.model("itinerary", itinerarySchema);
