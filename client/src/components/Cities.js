@@ -6,7 +6,7 @@ import { fetchCities } from '../store/actions/cityActions';
 //Component
 
 const Cities = () => {
-    document.title = 'My Tinerary Cities';
+    document.title = 'My Tinerary - Cities';
     const [filter, setFilter] = useState('');
     const data = useSelector(state => state.cities.cities.data);
     const dispatch = useDispatch();

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 function Landing() {
+    document.title = 'My Tinerary';
     return (
         <div className='container'>
             <div>
