@@ -24,6 +24,8 @@ const itinerarySchema = new mongoose.Schema({
   },
   name_city: {
     type: String,
+    ref:'cities',
+    required: true
   }
 });
 module.exports = mongoose.model("itinerary", itinerarySchema);

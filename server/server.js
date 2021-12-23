@@ -23,10 +23,11 @@ app.listen(port, () => {
 
 //routes
 app.use('/cities', require('./routes/cities'))
+app.use('/itineraries', require('./routes/itineraries'))
 
 //mongoose connect with db
 const mongoose = require("mongoose");
 
 mongoose.connect(db)
-    .then(() => console.log('Connection to Mongo DB established'))
-    .catch(err => console.log(err));
+  .then(() => console.log('Connection to Mongodb established'))
+  .catch(err => console.log(err));

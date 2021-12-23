@@ -16,12 +16,12 @@ router.post('/', (req, res) => {
         duration: req.body.duration,
         price: req.body.price,
         hashtag: req.body.hashtag,
-        namr_city: req.body.name_city
+        name_city: req.body.name_city
     })
 
-    itineraryModel.findOne({ title: newItinerary.title })
+    itineraryModel.findOne({ name: newItinerary.name })
     .then(itinerary => {
-        if (itinerary) res.status(500).send("Choose another title, this already exists in the DB")
+        if (itinerary) res.status(500).send("Choose another name, this already exists in the DB")
     }) 
     
     newItinerary.save()
@@ -42,15 +42,17 @@ router.get('/all', (req, res) => {
         .catch(err => console.log(err));
 });
 
-router.get('/bycity/:city_id',
+router.get('/:name_city',
     (req, res) => {
         let cityRequested = req.params.name_city;
         itineraryModel.findOne({ name_city: cityRequested })
-            .populate('name_city') //TODO populate with less things, not everything is needed here and a lot of data is duplicated
-            .exec((err, files) => {
-                console.log(files);
-                res.send(files)
+            .then(data => {
+                res.send(data)
             })
+            .catch(err => console.log(err));
 });
+
+
+
 
 module.exports = router;

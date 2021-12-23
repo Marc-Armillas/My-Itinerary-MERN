@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
         })
 });
 
-//get all cities*
+//get all cities
 router.get("/all", (req, res) => {
   cityModel
     .find({})
@@ -40,7 +40,7 @@ router.get("/all", (req, res) => {
 });
 
 
-//get one city
+//get cities by name
 router.get('/:name',
 	(req, res) => {
   		let cityRequested = req.params.name;
