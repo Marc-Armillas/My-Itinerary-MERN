@@ -13,7 +13,7 @@ function Landing() {
     return (
         <div className='container'>
             <div>
-                <img alt='my tinerary' src={img1} />
+                <Link to='/itineraries/all'><img alt='my tinerary' src={img1} /></Link>
             </div>
             <div>
                 <p>Find your perfect trip, designed by insiders who know and love their cities.</p>
@@ -28,11 +28,11 @@ function Landing() {
             <a href='#www.google.com'>Log in</a>
             <a href='#www.google.com'>Creato Account</a>
             <br />
-            <img alt='home' src={img3} />
+            <div>
+                <Link to='/'><img alt='home' src={img3} /></Link>
+            </div>
         </div>
     )
 }
-
-
 
 export {Landing}
