@@ -14,7 +14,7 @@ return async dispatch =>  {
 
 const fetchItineraryCity = (city) => {
   return async dispatch => {
-    const response = axios.get(`${url}inineraries/${city}`);
+    const response = axios.get(`${url}itineraries/${city}`);
     const fetchedCity = await response;
 
     dispatch(actionFetchSuccess(fetchedCity.data));

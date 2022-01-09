@@ -2,7 +2,7 @@
 import { React, useEffect, useState } from 'react';
 import {  useDispatch, useSelector } from "react-redux";
 import { fetchCities } from '../store/actions/cityActions';
-
+import { Link } from 'react-router-dom';
 //Component
 
 const Cities = () => {
@@ -33,7 +33,7 @@ const Cities = () => {
                              f.country.toLowerCase().startsWith(filter.toLocaleLowerCase()))
                                  .map(x => 
                                     <div key={x._id}>
-                                        <li>{x.name} //// {x.country}</li>
+                                        <li><Link to={`itineraries/${x.name}`}>{x.name}</Link> //// {x.country}</li>
                                         <img  alt={x.name} src={x.image} />
                                     </div>)}
                          </ul>
